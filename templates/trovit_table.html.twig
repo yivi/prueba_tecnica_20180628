@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Trovit Ads Table{% endblock %}
+
+{% block body %}
+    <h1>
+        Trovit Ads Table
+    </h1>
+    <h3><a href="{{ path('trovitJson') }}">Click here to download a JSON file with all the data.</a></h3>
+    <table>
+        <tr>
+            <th><a href="{{ path('trovitTable', {'sort': 'id'}) }}">ID</a></th>
+            <th><a href="{{ path('trovitTable', {'sort': 'title'}) }}">Title</a></th>
+            <th><a href="{{ path('trovitTable', {'sort': 'city'}) }}">URL</a></th>
+            <th>Picture</th>
+        </tr>
+        {# todo: advertisements may come empty. do some error checking. #}
+        {% for ad in advertisements %}
+            <tr>
+                <td>{{ ad.id }}</td>
+                <td>{{ ad.title }}</td>
+                <td>{{ ad.url }}</td>
+                <td><img style="max-width: 200px" src="{{ ad.picture_url }}" title="{{ ad.picture_title }}"></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

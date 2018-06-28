@@ -1,0 +1,13 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+
+trovitJson:
+  path: /api/rest/v1/trovitads
+  controller: App\Controller\TrovitRestController::getTrovitAds
+
+
+trovitTable:
+  path: /trovitads_table
+  controller: App\Controller\TrovitTableController::trovitTableAction

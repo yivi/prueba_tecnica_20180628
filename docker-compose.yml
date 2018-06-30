@@ -1,0 +1,19 @@
+version: "3"
+services:
+  phpsp:
+    build:
+      dockerfile: .docker/PHP-FPM.Dockerfile
+      context: ./
+    volumes:
+          - ./:/var/www/html
+    env_file:
+      - .env
+  nginxsp:
+    build:
+      dockerfile: .docker/nginx.Dockerfile
+      context: ./
+    ports:
+      - 8007:80
+    volumes:
+      - ./:/var/www/html
+      - .docker/nginx.conf.d:/etc/nginx/conf.d
